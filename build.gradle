@@ -19,6 +19,10 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// add mongodb dependency
+	implementation('org.springframework.boot:spring-boot-starter-data-mongodb')
+	implementation('org.mongodb:mongodb-driver-sync')
+	implementation('org.projectlombok:lombok')
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
