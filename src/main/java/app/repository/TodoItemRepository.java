@@ -1,6 +1,6 @@
 package app.repository;
 
-import app.model.TodoItem;
+import app.model.entity.TodoItem;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

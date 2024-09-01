@@ -1,35 +1,17 @@
 package app.service;
 
-import app.model.TodoItem;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import app.repository.TodoItemRepository;
+import app.model.dto.TodoDto;
 
 import java.util.List;
 
-@Service
-public class TodoItemService {
+public interface TodoItemService {
+  List<TodoDto> getAllTodoItems();
 
-  @Autowired
-  private TodoItemRepository todoItemRepository;
+  TodoDto createTodoItem(TodoDto newTodoItem);
 
-  public List<TodoItem> getAllTodoItems() {
-    return todoItemRepository.findAll();
-  }
+  TodoDto getTodoItem(String id);
 
-  public TodoItem createTodoItem(TodoItem newTodoItem) {
-    return todoItemRepository.save(newTodoItem);
-  }
+  void deleteTodoItem(String id);
 
-  public TodoItem getTodoItem(String id) {
-    return todoItemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid ID"));
-  }
-
-  public void deleteTodoItem(String id) {
-    todoItemRepository.deleteById(id);
-  }
-
-  public TodoItem updateTodoItem(TodoItem todoItem) {
-    return todoItemRepository.save(todoItem);
-  }
+  TodoDto updateTodoItem(TodoDto todoItem);
 }

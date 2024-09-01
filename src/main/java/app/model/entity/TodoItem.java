@@ -1,11 +1,15 @@
-package app.model;
+package app.model.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "todo")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TodoItem {
   @Id
   private String id;
@@ -16,7 +20,6 @@ public class TodoItem {
 
   public TodoItem(String id, String description) {
     this.description = description;
-    this.completed = false;
     this.id = id;
   }
 
