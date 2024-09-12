@@ -2,13 +2,11 @@ package app.service;
 
 import app.convertor.TodoItemConvertor;
 import app.model.dto.TodoDto;
-import app.model.entity.TodoItem;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import app.repository.TodoItemRepository;
-
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class TodoItemServiceImpl implements TodoItemService {
@@ -30,7 +28,8 @@ public class TodoItemServiceImpl implements TodoItemService {
   }
 
   public TodoDto getTodoItem(String id) {
-    return todoItemConvertor.convertToDto(todoItemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid ID")));
+    return todoItemConvertor.convertToDto(
+        todoItemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid ID")));
   }
 
   public void deleteTodoItem(String id) {

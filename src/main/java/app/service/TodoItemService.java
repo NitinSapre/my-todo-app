@@ -1,7 +1,6 @@
 package app.service;
 
 import app.model.dto.TodoDto;
-
 import java.util.List;
 
 public interface TodoItemService {

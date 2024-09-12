@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.2'
 	id 'io.spring.dependency-management' version '1.1.6'
+	id 'com.diffplug.spotless' version '6.8.0'
 }
 
 group = 'com.app'
@@ -19,15 +20,28 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	// add mongodb dependency
 	implementation('org.springframework.boot:spring-boot-starter-data-mongodb')
 	implementation('org.mongodb:mongodb-driver-sync')
 	implementation('org.projectlombok:lombok')
+
 	annotationProcessor('org.projectlombok:lombok')
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+spotless {
+	java {
+		target 'src/**/*.java'
+		palantirJavaFormat("2.50.0")
+		indentWithTabs()
+		indentWithSpaces(2)
+		removeUnusedImports()
+		trimTrailingWhitespace()
+		toggleOffOn()
+	}
 }

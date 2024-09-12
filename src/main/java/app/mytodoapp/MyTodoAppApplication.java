@@ -10,8 +10,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @EnableMongoRepositories(basePackages = "app.repository")
 public class MyTodoAppApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MyTodoAppApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(MyTodoAppApplication.class, args);
+  }
 }
