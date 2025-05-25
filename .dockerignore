@@ -1,0 +1,29 @@
+# Git
+.git
+.gitignore
+
+# Gradle
+.gradle/
+build/
+!build/libs/*.jar # Keep the JAR file in build/libs
+gradle/
+gradlew
+gradlew.bat
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+
+# Build artifacts and logs
+target/
+*.log
+out/
+
+# OS-specific
+.DS_Store
+Thumbs.db

@@ -17,8 +17,11 @@ services:
       KC_DB_URL: jdbc:postgresql://postgres/keycloak_db
       KC_DB_USERNAME: admin
       KC_DB_PASSWORD: admin
+      KC_HOSTNAME: keycloak
+      KC_HOSTNAME_STRICT: false
+      KC_HOSTNAME_STRICT_HTTPS: false
     ports:
-      - 5433:8080
+      - 8081:8080
     command: start-dev
     depends_on:
       - postgres
@@ -39,6 +42,23 @@ services:
       - 5432:5432
     networks:
         - app-network
+
+
+  my-todo-app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_APPLICATION_NAME: my-todo-app
+      SPRING_DATA_MONGODB_HOST: mongo
+      SPRING_DATA_MONGODB_PORT: 27017
+      SPRING_DATA_MONGODB_DATABASE: mydatabase
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: http://keycloak:8080/realms/test-mytodo
+    depends_on:
+      - mongo
+      - keycloak
+    networks:
+      - app-network
 
 volumes:
   keycloak_data:
